@@ -1,0 +1,25 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <label>GS1 Prefix:</label>
+        <input type="text" id="gs1pref" name="gs1" placeholder="978 or 979..."><br>
+        <label>Registration Group:</label>
+        <input type="text" id="registration" name="registration" placeholder="1 to 5 digits..."><br>
+        <label>Registrant Code:</label>
+        <input type="text" id="registrant" name="registrant" placeholder="Up to 7 digits..."><br>
+        <label>Publication Element:</label>
+        <input type="text" id="publication" name="publication" placeholder="Up to 6 digits..."><br>
+        <label>Check Digit:</label>
+        <input type="text" id="check" name="check" placeholder="Calculated by system" maxlength="1" readonly><br>
+        <button id="myButton">Calculate</button>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
