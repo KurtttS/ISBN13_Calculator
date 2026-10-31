@@ -10,13 +10,6 @@ const checkOut = document.getElementById('check');
 const button = document.getElementById('myButton');
 button.addEventListener('click', calculate);
 
-/*
-var gs1Digits = gs1Input.parseInt();
-var registrationDigits = gs1Input.parseInt();
-var registrantDigits = gs1Input.parseInt();
-var pubDigits = gs1Input.parseInt();
-*/
-
 function calculate(){
     //concat mga digits para isa lang ka string
     var digitConcat = gs1Input.value + registrationInput.value + registrantInput.value + pubInput.value;
