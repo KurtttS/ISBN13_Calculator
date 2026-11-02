@@ -1,28 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ISBN-13 Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <label>GS1 Prefix:</label>
-    <input type="text" id="gs1pref" name="gs1" placeholder="978 or 979..."><br>
-    <label>Registration Group:</label>
-    <input type="text" id="registration" name="registration" placeholder="1 to 5 digits..."><br>
-    <label>Registrant Code:</label>
-    <input type="text" id="registrant" name="registrant" placeholder="Up to 7 digits..."><br>
-    <label>Publication Element:</label>
-    <input type="text" id="publication" name="publication" placeholder="Up to 6 digits..."><br>
-    <label>Check Digit:</label>
-    <input type="text" id="check" name="check" placeholder="Calculated by system" maxlength="1" readonly><br>
-    <button id="myButton">Calculate</button>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">G</span>
+            <span>GLK BookCode</span>
+        </div>
+        <span class="nav-label">Ackkkthree</span>
+    </header>
+
+    <main class="container">
+
+        <section class="intro">
+            <span class="tag">BOOK IDENTIFICATION TOOL</span>
+            <h1>ISBN-13 <span>Calculator</span></h1>
+            <p>
+                Generate the check digit of your book's ISBN-13.
+                Simply enter the required ISBN components below.
+            </p>
+        </section>
+
+        <section class="calculator-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>ISBN Information</h2>
+                    <p>Enter your book's identification numbers.</p>
+                </div>
+                <div class="book-icon">📚</div>
+            </div>
+
+            <div class="form-group">
+                <label for="gs1pref">GS1 Prefix</label>
+                <input type="text" id="gs1pref" name="gs1"
+                    placeholder="e.g. 978 or 979">
+                <small>Usually starts with 978 or 979.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="registration">Registration Group</label>
+                <input type="text" id="registration" name="registration"
+                    placeholder="Enter 1 to 5 digits">
+            </div>
+
+            <div class="form-group">
+                <label for="registrant">Registrant Code</label>
+                <input type="text" id="registrant" name="registrant"
+                    placeholder="Enter up to 7 digits">
+            </div>
+
+            <div class="form-group">
+                <label for="publication">Publication Element</label>
+                <input type="text" id="publication" name="publication"
+                    placeholder="Enter up to 6 digits">
+            </div>
+
+            <div class="result-section">
+                <label for="check">Check Digit</label>
+                <input type="text" id="check" name="check"
+                    placeholder="?" maxlength="1" readonly>
+                <small>Your calculated ISBN check digit will appear here.</small>
+            </div>
+
+            <button id="myButton" type="button">
+                Calculate ISBN <span>→</span>
+            </button>
+
+            <div class="info-note">
+                <span>ⓘ</span>
+                <p>
+                    The check digit is calculated using the
+                    ISBN-13 weighting method.
+                </p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>ISBN-13 Calculator | GLK BookCode © 2026</p>
+        </footer>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
-
 </html>
