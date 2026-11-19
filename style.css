@@ -70,67 +70,56 @@ body {
     box-shadow: 0 30px 60px rgba(0,0,0,.35);
 }
 
-/* 3D BOOK */
-.scene { position: relative; height: 340px; perspective: 1100px; display: grid; place-items: center; }
+/* BARCODE DISPLAY */
+.scene { position: relative; height: 260px; perspective: 900px; display: grid; place-items: center; }
 .scene::after {
-    content: ""; position: absolute; bottom: 18px; left: 50%;
-    width: 210px; height: 26px; margin-left: -105px;
-    background: radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%);
+    content: ""; position: absolute; bottom: 14px; left: 50%;
+    width: 230px; height: 24px; margin-left: -115px;
+    background: radial-gradient(ellipse, rgba(0,0,0,.5), transparent 70%);
 }
-#slot { position: relative; width: 160px; height: 220px; transform-style: preserve-3d; }
-.book-wrap { position: absolute; inset: 0; transform-style: preserve-3d; animation: bob 4s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translateY(-12px); } }
-.book { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(-8deg) rotateY(28deg); }
-.face { position: absolute; backface-visibility: hidden; }
-.front {
-    inset: 0; transform: translateZ(18px);
-    border-radius: 3px 8px 8px 3px; padding: 18px 16px;
-    background: linear-gradient(145deg, #FFE24D, #FFC400 65%, #B38600);
-    box-shadow: inset 6px 0 10px rgba(0,0,0,.3), 0 0 40px rgba(255,214,10,.35);
-}
-.front { color: #0a0a0a; }
-.front small { font-size: 9px; letter-spacing: 2px; font-weight: 800; opacity: .8; }
-.front .lines { margin-top: 26px; display: grid; gap: 8px; }
-.front .lines i { display: block; height: 8px; border-radius: 4px; background: #0a0a0a; }
-.front .lines i:last-child { width: 60%; background: rgba(0,0,0,.45); }
-.spot {
-    position: absolute; left: 50%; bottom: 16px; width: 108px; height: 68px; margin-left: -54px;
-    border: 1.5px dashed rgba(0,0,0,.6); border-radius: 3px;
-    display: grid; place-items: center;
-}
-.spot span { font-size: 10px; letter-spacing: 2px; font-weight: 700; opacity: .65; }
-.spot.filled { border: none; }
-.spine {
-    width: 36px; height: 220px; left: 50%; margin-left: -18px;
-    transform: rotateY(-90deg) translateZ(80px);
-    background: linear-gradient(90deg, #0a0a0a, #2a2a2a);
-}
-.pages-t {
-    width: 154px; height: 36px; left: 3px; top: 50%; margin-top: -18px;
-    transform: rotateX(90deg) translateZ(110px);
-    background: repeating-linear-gradient(0deg, #fff 0 2px, #dcdce6 2px 3px);
-}
+#display { position: relative; z-index: 1; width: min(100%, 340px); animation: bob 4s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-10px); } }
 
-/* BARCODE STICKER */
-.sticker { width: 108px; height: 68px; background: #fff; border-radius: 3px; padding: 6px 6px 3px; }
-.sticker svg { display: block; width: 100%; height: 46px; }
-.sticker em { display: block; text-align: center; font-style: normal; font-size: 8px; font-weight: 600; letter-spacing: .6px; color: #111; margin-top: 3px; }
-.flyer { position: fixed; left: 0; top: 0; z-index: 50; pointer-events: none; box-shadow: 0 18px 40px rgba(0,0,0,.5), 0 0 30px rgba(255,255,255,.35); }
+.barcode-card {
+    position: relative; overflow: hidden;
+    background: #fff; border-radius: 10px; padding: 16px 18px 10px;
+    transform: rotateX(5deg) rotateY(-10deg);
+    box-shadow: 0 24px 50px rgba(0,0,0,.5), 0 0 40px rgba(255,214,10,.3);
+}
+.barcode-card svg { display: block; width: 100%; height: auto; }
+.barcode-card.ghost { opacity: .25; filter: grayscale(1); box-shadow: none; }
+
+/* print + scan animation */
+.barcode-card.scanning svg { animation: reveal .9s ease-out forwards; }
+@keyframes reveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.scan-line {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 3px;
+    background: #ff3b30; box-shadow: 0 0 14px 3px rgba(255,59,48,.7);
+    opacity: 0; pointer-events: none;
+}
+.barcode-card.scanning .scan-line { animation: scan .9s ease-out forwards; }
+@keyframes scan { 0% { left: 0; opacity: 1; } 95% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
 
 /* STATUS + SHELF */
 .status { text-align: center; font-size: 12px; color: var(--muted); min-height: 18px; margin: 6px 0 14px; }
 .status b { color: #FFE24D; }
 .shelf {
     display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-    min-height: 100px; padding: 14px; perspective: 500px;
+    min-height: 100px; padding: 14px;
     background: rgba(0,0,0,.25); border-radius: 10px;
     border-bottom: 4px solid rgba(255,255,255,.1);
 }
-.shelf:empty::before { content: "Finished books will line up here"; color: #6f7c92; font-size: 12px; align-self: center; }
-.mini { position: relative; width: 56px; height: 76px; }
-.mini .book-wrap { inset: auto; left: 0; top: 0; width: 160px; height: 220px; transform: scale(.34); transform-origin: 0 0; animation: none; }
+.shelf:empty::before { content: "Finished barcodes will line up here"; color: #6f7c92; font-size: 12px; align-self: center; }
 .counter { text-align: center; font-size: 12px; color: var(--muted); margin-top: 12px; }
 .counter b { color: #fff; font-size: 16px; }
+
+/* SHELF (mini barcodes) */
+.mini {
+    width: 92px; background: #fff; border-radius: 5px; padding: 5px 5px 3px;
+    animation: popin .4s ease;
+}
+.mini svg { display: block; width: 100%; height: auto; }
+@keyframes popin { from { transform: scale(.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
 
@@ -198,6 +187,21 @@ body {
 }
 .form-group input::placeholder, .result-section input::placeholder { color: #6f7c92; }
 .form-group small, .result-section small { display: block; font-size: 11px; color: #7f8ca2; margin-top: 7px; }
+
+/* VALIDATION */
+.msg { font-size: 12px; font-weight: 600; margin-top: 8px; }
+.msg:empty { display: none; }
+.msg.error { color: #ff6b5e; }
+.msg.ok { color: #7be27b; }
+.form-group input.invalid {
+    border-color: #ff6b5e;
+    box-shadow: 0 0 0 3px rgba(255,107,94,.2);
+}
+.form-group input.shake { animation: shake .4s ease; }
+@keyframes shake {
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
 
 /* RESULT */
 .result-section {

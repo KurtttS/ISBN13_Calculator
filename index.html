@@ -14,7 +14,7 @@
     <header class="navbar">
         <div class="logo">
             <span class="logo-icon">G</span>
-            <span>GLK BookCode</span>
+            <span>GLK ISBN-13 Calculator</span>
         </div>
         <span class="nav-label">Ackkkthree</span>
     </header>
@@ -22,10 +22,10 @@
     <main class="container">
 
         <section class="intro">
-            <span class="tag">BOOK IDENTIFICATION TOOL</span>
+            <span class="tag">BarCode IDENTIFICATION TOOL</span>
             <h1>ISBN-13 <span>Calculator</span></h1>
             <p>
-                Generate the check digit of your book's ISBN-13.
+                Generate the check digit of your item's ISBN-13.
                 Simply enter the required ISBN components below.
             </p>
         </section>
@@ -33,10 +33,10 @@
         <div class="layout">
 
         <section class="showcase">
-            <div class="scene" id="scene"><div id="slot"></div></div>
+            <div class="scene" id="scene"><div id="display"></div></div>
             <p class="status" id="status"></p>
             <div class="shelf" id="shelf"></div>
-            <p class="counter"><b id="count">0</b> books made</p>
+            <p class="counter"><b id="count">0</b> barcodes made</p>
         </section>
 
         <section class="calculator-card">
@@ -44,9 +44,9 @@
             <div class="card-header">
                 <div>
                     <h2>ISBN Information</h2>
-                    <p>Enter your book's identification numbers.</p>
+                    <p>Enter your identification numbers.</p>
                 </div>
-                <div class="book-icon">📚</div>
+                <div class="book-icon">𝄃𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
             </div>
 
             <div class="form-group">
@@ -54,6 +54,7 @@
                 <input type="text" id="predigits" name="predigits"
                     placeholder="Enter your 12 digits here...">
                 <small>These are used to calculate the check digit.</small>
+                <p class="msg" id="msg" aria-live="polite"></p>
             </div>
 
             <div class="result-section">
