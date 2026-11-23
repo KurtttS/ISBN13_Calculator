@@ -2,17 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript Boilerplate Loaded Successfully!');
 });
 
-const gs1Input = document.getElementById('gs1pref');
-const registrationInput = document.getElementById('registration');
-const registrantInput = document.getElementById('registrant');
-const pubInput= document.getElementById('publication');
+const predigitsinput = document.getElementById('predigits');
 const checkOut = document.getElementById('check');
 const button = document.getElementById('myButton');
 button.addEventListener('click', calculate);
 
 function calculate(){
-    //concat mga digits para isa lang ka string
-    var digitConcat = gs1Input.value + registrationInput.value + registrantInput.value + pubInput.value;
+    var digitConcat = predigitsinput.value;
     var runthroughloop = Array.from(digitConcat);
     var singlesum = 0; 
 
@@ -22,10 +18,10 @@ function calculate(){
         var currentDigit = Number(runthroughloop[i]);
         
         if (i % 2 == 0){
-            singlesum += currentDigit*3;
+            singlesum += currentDigit*1;
         } 
         else { 
-            singlesum += currentDigit*1;
+            singlesum += currentDigit*3;
         }
     }
 
